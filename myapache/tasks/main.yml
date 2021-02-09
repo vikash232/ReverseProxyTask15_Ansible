@@ -1,0 +1,18 @@
+---
+# tasks file for myapache
+
+- package:
+            name: "php"
+            state: present
+- package:
+            name: "httpd"
+            state: present
+
+- service:
+            name: "httpd"
+            state: started
+- template:
+            src: "templates/{{ file_name }}"
+            dest: "/var/www/html/"
+   
+  notify: Restart service
